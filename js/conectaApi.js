@@ -1,12 +1,12 @@
 async function listaVideos() {
-    const conexao = await fetch("https://json-alura-play.vercel.app/");
+    const conexao = await fetch("http://localhost:3000/videos");
     const conexaoConvertida = await conexao.json();
 
     return conexaoConvertida;
 }
 
 async function criaVideo(titulo, descricao, url, imagem) {
-    const conexao = await fetch("https://json-alura-play.vercel.app/", {
+    const conexao = await fetch("http://localhost:3000/videos", {
         method: "POST",
         headers: {
             "Content-type": "application/json"
@@ -18,9 +18,8 @@ async function criaVideo(titulo, descricao, url, imagem) {
             imagem: imagem
         })
     });
-    if(!conexao.ok) {
-        throw new Error("Não foi possivel enviar o vídeo");
-
+    if (!conexao.ok) {
+        throw new Error("Não foi possível enviar o vídeo")
     }
     const conexaoConvertida = conexao.json();
 
@@ -28,7 +27,7 @@ async function criaVideo(titulo, descricao, url, imagem) {
 }
 
 async function buscaVideo(termoDeBusca) {
-    const conexao = await fetch(`https://json-alura-play.vercel.app/?q=${termoDeBusca}`);
+    const conexao = await fetch(`http://localhost:3000/videos?q=${termoDeBusca}`);
     const conexaoConvertida = await conexao.json();
 
     return conexaoConvertida;
