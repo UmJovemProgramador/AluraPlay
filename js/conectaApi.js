@@ -1,12 +1,12 @@
 async function listaVideos() {
-    const conexao = await fetch("https://raw.githubusercontent.com/UmJovemProgramador/Json-teste/main/db.json");
+    const conexao = await fetch("../db.json");
     const conexaoConvertida = await conexao.json();
 
     return conexaoConvertida;
 }
 
 async function criaVideo(titulo, descricao, url, imagem) {
-    const conexao = await fetch("https://raw.githubusercontent.com/UmJovemProgramador/Json-teste/main/db.json", {
+    const conexao = await fetch("../db.json", {
         method: "POST",
         headers: {
             "Content-type": "application/json"
@@ -27,7 +27,7 @@ async function criaVideo(titulo, descricao, url, imagem) {
 }
 
 async function buscaVideo(termoDeBusca) {
-    const conexao = await fetch(`https://raw.githubusercontent.com/UmJovemProgramador/Json-teste/main/db.json?q=${termoDeBusca}`);
+    const conexao = await fetch(`../db.json?q=${termoDeBusca}`);
     const conexaoConvertida = await conexao.json();
 
     return conexaoConvertida;
